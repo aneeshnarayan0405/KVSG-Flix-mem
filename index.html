@@ -927,7 +927,7 @@ function buildHeroSlideshow(year, cfg){
   const items=[];
 
   photos.slice(0,maxSlides).forEach(f=>{
-    items.push({ src: BASE+'/Year '+year+'/'f, type:'photo' });
+    items.push({ src: BASE+'/Year '+year+'/'+f, type:'photo' });
   });
   vids.slice(0,Math.max(0,maxSlides-items.length)).forEach(v=>{
     if(v.thumb) items.push({ src: BASE+'/Year '+year+'/'v.thumb, type:'video', videoFile: v.file, title: v.title });
@@ -973,7 +973,7 @@ function buildHeroSlideshow(year, cfg){
   }
 
   // Set hero play to first video in cfg
-  window._heroVideoUrl = (vids.length>0) ? BASE+'/Year '+year+'/'vids[0].file : null;
+  window._heroVideoUrl = (vids.length>0) ? BASE+'/Year '+year+'/'+vids[0].file : null;
   window._heroVideoTitle = vids.length>0 ? vids[0].title||'Featured Video' : '';
 }
 
@@ -1010,7 +1010,7 @@ function buildVideoCards(year,videos){
     return;
   }
   videos.forEach((v,i)=>{
-    const url=BASE+'/Year '+year+'/'v.file;
+    const url=BASE+'/Year '+year+'/'+v.file;
     const thumb=v.thumb ? BASE+'/Year '+year+'/'v.thumb : '';
     const card=document.createElement('div');
     card.className='media-card';
@@ -1038,9 +1038,9 @@ function buildPhotoCards(year,photos){
     grid.innerHTML='<div class="empty-row">No photos yet — add .jpg/.png files to your year'+year+'/ folder in GitHub 📂</div>';
     return;
   }
-  lbPhotos=photos.map(f=>BASE+'/Year '+year+'/'f);
+  lbPhotos=photos.map(f=>BASE+'/Year '+year+'/'+f);
   photos.forEach((file,i)=>{
-    const url=BASE+'/Year '+year+'/'file;
+    const url=BASE+'/Year '+year+'/'+file;
     const card=document.createElement('div');
     card.className='media-card';
     card.style.animationDelay=(i*.05)+'s';

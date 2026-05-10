@@ -663,7 +663,7 @@ body{background:var(--darker);color:#fff;font-family:'Montserrat',sans-serif;min
 // ─────────────────────────────────────────────
 // 🔗 YOUR GITHUB RAW BASE URL
 // ─────────────────────────────────────────────
-const BASE = "https://raw.githubusercontent.com/aneeshnarayan0405/KVSG-Flix-mem/main";
+const BASE = "https://raw.githubusercontent.com/YOUR_USERNAME/kvsg-flix/main";
 //            ↑ Replace YOUR_USERNAME with your actual GitHub username
 
 // ─────────────────────────────────────────────
@@ -735,51 +735,12 @@ const MEDIA = {
     }
   },
   3: {
-  videos: [
-    { file:"VID20250201192127.mp4", title:"Fun Memories" },
-    { file:"VID20250312181450.mp4", title:"College Moments" },
-    { file:"VID20250516195202.mp4", title:"Crazy Day" },
-    { file:"VID20251109160404.mp4", title:"Last Bench Energy" }
-  ],
-
-  photos: [
-    "IMG20240807170533.jpg",
-    "IMG20240818135521.jpg",
-    "IMG20240819131415.jpg",
-    "IMG20241102131802.jpg",
-    "IMG20250129214312.jpg",
-    "IMG20250129214357.jpg",
-    "IMG20250205144905.jpg",
-    "IMG20250305180311.jpg",
-    "IMG20250306032945.jpg",
-    "IMG20250312181532.jpg",
-    "IMG20250323203747.jpg",
-    "IMG20250406113916.jpg",
-    "IMG20250406115313.jpg",
-    "IMG20250508220344.jpg",
-    "IMG20250509191922.jpg",
-    "IMG20250827104018.jpg",
-    "IMG20250831200321.jpg",
-    "IMG20250831200532_01.jpg",
-    "IMG20250925125651.jpg",
-    "IMG20250925125708.jpg",
-    "IMG20250925205723_01.jpg",
-    "IMG20251104173703.jpg",
-    "IMG20251114213211.jpg",
-    "IMG20251119165301.jpg",
-    "IMG20251124191922.jpg",
-    "IMG20251206113846.jpg",
-    "IMG20251206114950.jpg",
-    "IMG20251206114959.jpg",
-    "IMG20251206125008.jpg",
-    "IMG20251206125025.jpg",
-    "IMG20251206171144.jpg",
-    "IMG20251206181612.jpg",
-    "IMG20251208170207.jpg",
-    "IMG20251211140628.jpg",
-    "IMG_20251206_113922.jpg",
-    "IMG_2801.HEIC"
-  ],
+    videos: [
+      // { file:"project_demo.mp4", title:"That One Project Night", thumb:"" },
+    ],
+    photos: [
+      // "photo1.jpg",
+    ],
     hero: {
       label: "Chapter 03 · Third Year",
       title: "Peak Chaos",
@@ -927,10 +888,10 @@ function buildHeroSlideshow(year, cfg){
   const items=[];
 
   photos.slice(0,maxSlides).forEach(f=>{
-    items.push({ src: BASE+'/Year '+year+'/'+f, type:'photo' });
+    items.push({ src: BASE+'/year'+year+'/'+f, type:'photo' });
   });
   vids.slice(0,Math.max(0,maxSlides-items.length)).forEach(v=>{
-    if(v.thumb) items.push({ src: BASE+'/Year '+year+'/'v.thumb, type:'video', videoFile: v.file, title: v.title });
+    if(v.thumb) items.push({ src: BASE+'/year'+year+'/'+v.thumb, type:'video', videoFile: v.file, title: v.title });
   });
 
   if(items.length===0){
@@ -973,7 +934,7 @@ function buildHeroSlideshow(year, cfg){
   }
 
   // Set hero play to first video in cfg
-  window._heroVideoUrl = (vids.length>0) ? BASE+'/Year '+year+'/'+vids[0].file : null;
+  window._heroVideoUrl = (vids.length>0) ? BASE+'/year'+year+'/'+vids[0].file : null;
   window._heroVideoTitle = vids.length>0 ? vids[0].title||'Featured Video' : '';
 }
 
@@ -1010,8 +971,8 @@ function buildVideoCards(year,videos){
     return;
   }
   videos.forEach((v,i)=>{
-    const url=BASE+'/Year '+year+'/'+v.file;
-    const thumb=v.thumb ? BASE+'/Year '+year+'/'v.thumb : '';
+    const url=BASE+'/year'+year+'/'+v.file;
+    const thumb=v.thumb ? BASE+'/year'+year+'/'+v.thumb : '';
     const card=document.createElement('div');
     card.className='media-card';
     card.style.animationDelay=(i*.08)+'s';
@@ -1038,9 +999,9 @@ function buildPhotoCards(year,photos){
     grid.innerHTML='<div class="empty-row">No photos yet — add .jpg/.png files to your year'+year+'/ folder in GitHub 📂</div>';
     return;
   }
-  lbPhotos=photos.map(f=>BASE+'/Year '+year+'/'+f);
+  lbPhotos=photos.map(f=>BASE+'/year'+year+'/'+f);
   photos.forEach((file,i)=>{
-    const url=BASE+'/Year '+year+'/'+file;
+    const url=BASE+'/year'+year+'/'+file;
     const card=document.createElement('div');
     card.className='media-card';
     card.style.animationDelay=(i*.05)+'s';
